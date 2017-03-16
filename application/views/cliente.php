@@ -6,15 +6,15 @@
       <form class="form-inline">
       <div class="form-group">
       <label>Nº Cliente:</label>  
-      &nbsp;    
+		  &nbsp;    
       <input type="text" style="text-align: center;" class="form-control" value="<?php print $id_cliente;?>" disabled>           
       </div>      
-      &nbsp;
-      &nbsp;
-      &nbsp;
+	      &nbsp;
+	      &nbsp;
+	      &nbsp;
       <div class="form-group">
       <label>Nº Web:</label>     
-      &nbsp; 
+          &nbsp; 
       <input type="text" style="text-align: center;" class="form-control" value="<?php print $id_web;?>" disabled>      
       </div>
       </form>	  	 

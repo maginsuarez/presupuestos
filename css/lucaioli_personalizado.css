@@ -1,0 +1,34 @@
+.boton_login_personalizado{
+	font-size: 80% !important;
+}
+.input_text_personalizado{
+  font-size: 80% !important;
+}
+.pass_text_personalizado{
+  font-size: 80% !important;
+}
+.estilo_texto{
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: normal !important;
+}
+.estilo_texto_panel{
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: normal !important;
+  font-size: 12px;
+}
+.estilo_texto_panel_titulo{
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 12px;
+}
+.estilo_icono{
+  font-weight: normal !important;
+}
+.mover_logout{
+  margin-top: -23px !important;
+}
+.long_select{
+  height: 25px !important;
+}
+.center_menu{
+  margin-bottom: 0px !important; 
+}

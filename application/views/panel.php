@@ -156,10 +156,12 @@ function cambiar_panel(id){
 
 function habilitar_opcion_tarjeta(){
   document.getElementById("opcion_tarjeta").style.display = "";
+  document.getElementById("info_tarjeta").style.display = "";
 }
 
 function deshabilitar_opcion_tarjeta(){
   document.getElementById("opcion_tarjeta").style.display = "none";
+  document.getElementById("info_tarjeta").style.display = "none";
 }
 
 function guardar_elemento(){

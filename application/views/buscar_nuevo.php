@@ -5,7 +5,7 @@
 			<a href="<?php echo base_url(); ?>index.php/presupuesto/logout" class="cerrar_sesion mover_logout">			  	
 				<div class="estilo_texto">Cerrar sesión</div>
 			</a>
-	    <h2>Presupuestos <strong>E</strong>-Commerce</h2>
+	    <h2>Presupuestos <strong>E-Commerce</strong></h2>
 	    </br>
 	    
 	    <?php echo $modal; ?>

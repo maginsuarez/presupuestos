@@ -40,7 +40,7 @@
 
   <?php $long = "col-sm-8";?>
   
-  <div class="col-md-6">    
+  <div class="col-md-6" id="info_tarjeta" style="display:none;">    
     <?php echo form_open('/presupuesto/guardar_pago/'.$id_presupuesto, array('class' => "form-horizontal")) ;?>
     <input name="id_cliente" value="<?php print $id; ?>" hidden>
     <div class="form-group">

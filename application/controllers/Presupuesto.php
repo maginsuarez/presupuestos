@@ -73,7 +73,7 @@ class Presupuesto extends CI_Controller {
 		$usuario_data = array('logueado' => FALSE);
 		$this->session->set_userdata($usuario_data);
 		$this->index();
-    }
+    }   
 	
 	public function guardar_cliente($id){
 		if($this->session->userdata('logueado')){
@@ -87,6 +87,21 @@ class Presupuesto extends CI_Controller {
 				$c_telefono   	= $this->input->post('c_telefono');						
 				$c_email		= $this->input->post('c_email');													
 				$usuario  		= $this->model_presupuesto->save_cliente($id_cliente, $c_nombre, $c_apellido, $c_direccion, $c_postal, $c_localidad, $c_telefono, $c_email);													   		
+				$this->panel($id); 
+			}
+			else $this->index();
+		}
+		else $this->index();      	
+	}
+
+	public function guardar_compra($id){
+		if($this->session->userdata('logueado')){
+			if ($this->input->post()) {	
+				$anticipo 		= $this->input->post('anticipo');
+				$costo	 		= $this->input->post('costo');
+				$vencimiento 	= $this->input->post('vencimiento');				
+				$compra = $this->model_presupuesto->save_compra($anticipo, $costo, $vencimiento, $id);	
+
 				$this->panel($id); 
 			}
 			else $this->index();

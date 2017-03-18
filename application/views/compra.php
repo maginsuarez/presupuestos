@@ -40,7 +40,7 @@
           echo "<input id='precio_".$i."' value='".$e."' hidden/>";
           echo "<input id='dp_".$i."' value='".$f."' hidden/>";
 
-          echo "<tr>";
+          echo "<tr id='tr_".$a."'>";
           echo "<th scope='row'>".$a."</th>";
           echo "<td>".$b."</td>";
           echo "<td>".$c."</td>";
@@ -50,7 +50,7 @@
           echo "<td>";                                    
           echo '<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editar" onclick="editar_elemento('.$i.');">
           Editar</button> ';
-          echo '<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar">
+          echo '<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar" onclick="guardar_temporal('.$a.', '.$id_presupuesto.')">
           Eliminar</button>';
           echo "</td>";                                   
           echo "</tr>";                                                                                        
@@ -150,7 +150,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-danger">Eliminar</button>
+              <button onclick="eliminar_dato()" type="button" class="btn btn-danger">Eliminar</button>
             </div>
           </div>
         </div>
@@ -162,12 +162,12 @@
     </br>
     <div class="row">
       <div class="col-md-4">
-      <?php echo form_open('/presupuesto/guardar_cliente/'.$id_presupuesto) ;?>
+      <?php echo form_open('/presupuesto/guardar_compra/'.$id_presupuesto) ;?>
         <div class="input-group">
         <span class="input-group-addon input_group_addon_selectivo estilo_texto_panel">Anticipo</span>
         <input id="msg" type="text" 
         style="text-align: center;"
-        class="form-control input-sm" name="msg" value="<?php echo $anticipo;?>">
+        class="form-control input-sm" name="anticipo" value="<?php echo $anticipo;?>">
         </div>
         <br>
         <div class="input-group">
@@ -175,14 +175,14 @@
           <input id="msg" type="text" 
           class="form-control input-sm"
           style="text-align: center;" 
-          name="msg" value="<?php echo $costo_envio;?>">
+          name="costo" value="<?php echo $costo_envio;?>">
         </div>
         <br>
         <div class="input-group">
           <span class="input-group-addon input_group_addon_selectivo estilo_texto_panel">Vencimiento</span>
           <input id="msg" 
           style="text-align: center;" 
-          type="text" class="form-control input-sm" name="msg" value="<?php echo $vencimiento;?>">
+          type="text" class="form-control input-sm" name="vencimiento" value="<?php echo $vencimiento;?>">
         </div>
         <br>
         <div class="input-group">                  

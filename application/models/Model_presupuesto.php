@@ -155,6 +155,16 @@ Class Model_Presupuesto extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->update('presupuestos', $data2);		
 	}
+
+	function save_compra($anticipo, $costo, $vencimiento, $id){
+		$data = array(
+           'anticipo' => $anticipo,
+           'costo_envio' => $costo,
+           'vencimiento' => $vencimiento
+        );
+        $this->db->where('id', $id);
+		$this->db->update('presupuestos', $data);	
+	}
 	
 	function save_cliente($id_cliente, $c_nombre, $c_apellido, $c_direccion, $c_postal, $c_localidad, $c_telefono, $c_email){
 		$data = array(

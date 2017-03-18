@@ -37,3 +37,24 @@ function eliminar_dato(){
 	});
 }
 
+function guardar_compra(){
+	var cod = document.getElementById("cod").value;
+	var des = document.getElementById("des").value;
+	var cuo = document.getElementById("cuo").value;
+	var pre = document.getElementById("pre").value;
+	var dp = document.getElementById("dp").value;
+	var parametros={"id" : localStorage.getItem("compra_temporal_id"),"cod": cod, "des": des, "cuo": cuo, "pre": pre, "dp": dp};
+
+	$.ajax({
+	  data: parametros,
+	  url:'/presupuestos/php/editar_compra.php',
+	  type: 'post',	  
+	  async: false,
+	  success: function (data) {
+	  	console.log(data);	  	
+		$('#editar').modal('toggle');
+		localStorage.setItem("compra_temporal_id", ""); 
+	  }
+	});		
+}
+

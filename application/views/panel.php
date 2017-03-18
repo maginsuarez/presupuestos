@@ -175,8 +175,9 @@ function guardar_elemento(){
   var elem_6 = document.getElementById("dp_"+a).value;
 }
 
-function editar_elemento(a){    
-  var elem_1 = document.getElementById("id_"+a).value;
+function editar_elemento(a, id){          
+  var elem_1 = document.getElementById("id_"+a).value;    
+  localStorage.setItem("compra_temporal_id", id);
   var elem_2 = document.getElementById("codigo_"+a).value;
   var elem_3 = document.getElementById("descripcion_"+a).value;
   var elem_4 = document.getElementById("cuotas_"+a).value;

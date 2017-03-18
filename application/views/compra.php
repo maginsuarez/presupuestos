@@ -48,7 +48,7 @@
           echo "<td>".$e."</td>";
           echo "<td>".$f."</td>";                                                           
           echo "<td>";                                    
-          echo '<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editar" onclick="editar_elemento('.$i.');">
+          echo '<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editar" onclick="editar_elemento('.$i.', '.$a.');">
           Editar</button> ';
           echo '<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar" onclick="guardar_temporal('.$a.', '.$id_presupuesto.')">
           Eliminar</button>';
@@ -91,7 +91,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <a href="/presupuestos/index.php/presupuesto/editar" type="submit" class="btn btn-info">Guardar</a>
+                <a onclick="guardar_compra()" type="submit" class="btn btn-info">Guardar</a>
               </div>
               </form>
             </div>            

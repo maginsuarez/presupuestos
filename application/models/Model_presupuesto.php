@@ -49,6 +49,15 @@ Class Model_Presupuesto extends CI_Model {
 		return $resultado;
 	}
 
+	function get_tarjeta($id){
+		$this -> db -> select('*');
+		$this -> db -> from('presupuestos_pago');	
+		$this -> db -> where('id', $id);
+		$consulta = $this -> db -> get();
+		$resultado = $consulta -> row();
+		return $resultado;
+	}
+
 	function get_idweb($id){
 		$this -> db -> select('id_web');
 		$this -> db -> from('presupuestos');	
@@ -124,9 +133,9 @@ Class Model_Presupuesto extends CI_Model {
 		$this->db->update('presupuestos_envio', $data);
 	}
 	
-	function save_pago($id_cliente, $nombre, $apellido, $nacimiento, $dni, $email, $fijo, $direccion, $postal, $localidad){
+	function save_pago($id_cliente, $n, $apellido, $nacimiento, $dni, $email, $fijo, $direccion, $postal, $localidad, $p, $t, $id){
 		$data = array(
-           'p_nombres' => $nombre,
+           'p_nombres' => $n,
            'p_apellidos' => $apellido,
            'p_fecha_nacimiento' => $nacimiento,
            'p_dni' => $dni,           
@@ -136,8 +145,15 @@ Class Model_Presupuesto extends CI_Model {
 		   'p_cp' => $postal,		   
 		   'p_localidad' => $localidad		                                 
         );
+
 		$this->db->where('id', $id_cliente);
 		$this->db->update('presupuestos_cliente', $data);
+	
+		$x = "";
+		if($p == "T") $x = $t;
+		$data2 = array('forma_pago' => $p, 'id_pago' => $x);
+		$this->db->where('id', $id);
+		$this->db->update('presupuestos', $data2);		
 	}
 	
 	function save_cliente($id_cliente, $c_nombre, $c_apellido, $c_direccion, $c_postal, $c_localidad, $c_telefono, $c_email){

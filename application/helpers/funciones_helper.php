@@ -14,7 +14,7 @@ if(!function_exists('cadena_especial')){
 
 if(!function_exists('parset_resultado_panel')){
 
-	function parset_resultado_panel($datos, $mi_presupuesto, $tarjetas, $envio, $compras){
+	function parset_resultado_panel($datos, $mi_presupuesto, $tarjetas, $envio, $compras, $tarjeta){
 		
 		//Datos del cliente.					   
 		$data['id']   			= $datos['id'];
@@ -36,7 +36,10 @@ if(!function_exists('parset_resultado_panel')){
 	    $data['anticipo']   	= $mi_presupuesto['anticipo'];
 	    $data['costo_envio']   	= $mi_presupuesto['costo_envio'];
 	    $data['vencimiento']   	= $mi_presupuesto['vencimiento'];
-	    $data['forma_pago']    	= $mi_presupuesto['forma_pago'];
+	    $data['forma_pago']    	= $mi_presupuesto['forma_pago'];	
+
+	    //Tarjeta seleccionada
+		$data['mi_tarjeta']	    = $tarjeta;    
 		
 		//Datos de compras.
 	    $data['compras']    	= $compras;

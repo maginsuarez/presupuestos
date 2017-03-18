@@ -146,7 +146,11 @@ $( document ).ready(function() {
       $("#2a").removeClass('active');
       $("#3a").removeClass('active');
       $("#4a").removeClass('active');      
-      $("#"+solapa+"a").addClass('active');      
+      $("#"+solapa+"a").addClass('active');  
+
+      var select = document.getElementById("pago");
+      var valor  = select.options[select.selectedIndex].value;
+      if(valor == 'T') habilitar_opcion_tarjeta();
     }    
 });
 
@@ -155,13 +159,11 @@ function cambiar_panel(id){
 }
 
 function habilitar_opcion_tarjeta(){
-  document.getElementById("opcion_tarjeta").style.display = "";
-  document.getElementById("info_tarjeta").style.display = "";
+  document.getElementById("opcion_tarjeta").style.display = "";  
 }
 
 function deshabilitar_opcion_tarjeta(){
-  document.getElementById("opcion_tarjeta").style.display = "none";
-  document.getElementById("info_tarjeta").style.display = "none";
+  document.getElementById("opcion_tarjeta").style.display = "none";  
 }
 
 function guardar_elemento(){
@@ -193,15 +195,8 @@ function cambio_tarjeta(){
   var select = document.getElementById("pago");
   var valor  = select.options[select.selectedIndex].value;
 
-  if(valor == 2) habilitar_opcion_tarjeta();
-  else deshabilitar_opcion_tarjeta();
-  
-  if(valor == 2){
-    document.getElementById("tarjetas").disabled = false;
-  }
-  else{
-    document.getElementById("tarjetas").disabled = true; 
-  }
+  if(valor == 'T') habilitar_opcion_tarjeta();
+  else deshabilitar_opcion_tarjeta();  
 }
 
 </script>

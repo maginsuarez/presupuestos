@@ -97,6 +97,7 @@ class Presupuesto extends CI_Controller {
 	public function guardar_pago($id){
 		if($this->session->userdata('logueado')){
 			if ($this->input->post()) {			
+				$id_presupuesto = $this->input->post('id_presupuesto');
 				$id_cliente = $this->input->post('id_cliente');	
 				$nombre 	= $this->input->post('pago_nombre');
 				$apellido 	= $this->input->post('pago_apellido');				
@@ -106,8 +107,24 @@ class Presupuesto extends CI_Controller {
 				$fijo    	= $this->input->post('pago_tel_fijo');			
 				$direccion	= $this->input->post('pago_direccion');
 				$postal		= $this->input->post('pago_postal');						
-				$localidad  = $this->input->post('pago_localidad');						
-				$usuario  = $this->model_presupuesto->save_pago($id_cliente, $nombre, $apellido, $nacimiento, $dni, $email, $fijo, $direccion, $postal, $localidad);												   		
+				$localidad  = $this->input->post('pago_localidad');
+
+				$pago 		= $this->input->post('pago');
+				$tarjeta	= $this->input->post('tarjeta');				
+
+				$usuario    = $this->model_presupuesto->save_pago($id_cliente, 
+																  $nombre, 
+																  $apellido, 
+																  $nacimiento, 
+																  $dni, 
+																  $email, 
+																  $fijo, 
+																  $direccion, 
+																  $postal, 
+																  $localidad,
+																  $pago,
+																  $tarjeta,
+																  $id_presupuesto);												   		
 				$this->panel($id); 
 			}
 			else $this->index();
@@ -144,6 +161,10 @@ class Presupuesto extends CI_Controller {
 				//Obtener mi datos de envio   				   				
    				$p_id = $mi_presupuesto['id'];
    				$nro_envio = $mi_presupuesto['nro_envio'];
+   				$tipo_tarjeta = $mi_presupuesto['id_pago'];
+
+   				$tarjeta = (array) $this->model_presupuesto->get_tarjeta($tipo_tarjeta);
+
    				$datos_envio = (array) $this->model_presupuesto->get_mi_envio($nro_envio);   	   				
 
    				//Busco los datos del cliente
@@ -151,7 +172,7 @@ class Presupuesto extends CI_Controller {
 		        $compras = $this->model_presupuesto->get_compras($p_id);		        
 				$tarjetas = $this->model_presupuesto->get_tarjetas();		        
 
-			    $datos = parset_resultado_panel($datos,$mi_presupuesto,$tarjetas,$datos_envio,$compras);
+			    $datos = parset_resultado_panel($datos,$mi_presupuesto,$tarjetas,$datos_envio,$compras, $tarjeta);
 				$this->load->view('header');							
 			    $this->load->view('panel',$datos);
 			    $this->load->view('footer');

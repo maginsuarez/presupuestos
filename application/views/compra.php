@@ -162,7 +162,7 @@
     </br>
     <div class="row">
       <div class="col-md-4">
-      <form>
+      <?php echo form_open('/presupuesto/guardar_cliente/'.$id_presupuesto) ;?>
         <div class="input-group">
         <span class="input-group-addon input_group_addon_selectivo estilo_texto_panel">Anticipo</span>
         <input id="msg" type="text" 
@@ -184,7 +184,11 @@
           style="text-align: center;" 
           type="text" class="form-control input-sm" name="msg" value="<?php echo $vencimiento;?>">
         </div>
-      </form>
+        <br>
+        <div class="input-group">                  
+          <input class="btn btn-success boton_panel" type="submit" value="Guardar"></input>          
+        </div>
+      <?php echo form_close();?>
       </div>
     </div>
   </div>

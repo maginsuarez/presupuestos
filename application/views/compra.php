@@ -1,3 +1,11 @@
+<?php 
+    if(isset($id_presupuesto) == false)  $id_presupuesto = "";    
+    if(isset($compras) == false) $compras = [];     
+    if(isset($costo_envio) == false) $costo_envio = ""; 
+    if(isset($anticipo) == false) $anticipo = "";
+    if(isset($vencimiento) == false) $vencimiento = "";    
+  ?>
+
 <div class="tab-pane" id="2a">
 </br>
   <div>
@@ -164,7 +172,7 @@
     </br>
     <div class="row">
       <div class="col-md-4">
-      <?php echo form_open('/presupuesto/guardar_compra/'.$id_presupuesto) ;?>
+      <?php echo form_open('/presupuesto/update_presupuesto/'.$id_presupuesto) ;?>
         <div class="input-group">
         <span class="input-group-addon input_group_addon_selectivo estilo_texto_panel">Anticipo</span>
         <input id="msg" type="text" 

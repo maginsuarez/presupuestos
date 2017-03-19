@@ -5,6 +5,22 @@
 
   <?php $long = "col-sm-6";?>
   
+  <?php 
+    if(isset($id_presupuesto) == false)  $id_presupuesto = "";
+    if(isset($id) == false) $id = ""; 
+    if(isset($forma_pago) == false) $forma_pago = ""; 
+    if(isset($tarjetas) == false) $tarjetas = []; 
+    if(isset($nombre) == false) $nombre = ""; 
+    if(isset($apellido) == false) $apellido = "";
+    if(isset($nacimiento) == false) $nacimiento = ""; 
+    if(isset($dni) == false) $dni = ""; 
+    if(isset($email) == false) $email = "";
+    if(isset($fijo) == false) $fijo = "";
+    if(isset($direccion) == false) $direccion = "";
+    if(isset($postal) == false) $postal = ""; 
+    if(isset($localidad) == false) $localidad = "";  
+  ?>
+
   <div class="col-md-8">    
     <?php echo form_open('/presupuesto/guardar_pago/'.$id_presupuesto, array('class' => "form-horizontal")) ;?>
     <div>

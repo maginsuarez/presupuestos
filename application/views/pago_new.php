@@ -1,3 +1,20 @@
+
+<?php 
+    if(isset($id_presupuesto) == false)  $id_presupuesto = "";    
+    if(isset($forma_pago) == false) $forma_pago = ""; 
+    if(isset($id) == false) $id = "";
+    if(isset($tarjetas) == false) $tarjetas = [];
+    if(isset($nombre) == false) $nombre = "";    
+    if(isset($apellido) == false) $apellido = "";   
+    if(isset($nacimiento) == false) $nacimiento = "";  
+    if(isset($dni) == false) $dni = "";   
+    if(isset($email) == false) $email = "";  
+    if(isset($fijo) == false) $fijo = "";  
+    if(isset($direccion) == false) $direccion = "";  
+    if(isset($postal) == false) $postal = "";  
+    if(isset($localidad) == false) $localidad = "";  
+  ?>
+
 <div class="tab-pane" id="3a">
 </br>
   <div class="container">

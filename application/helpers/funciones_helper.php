@@ -15,48 +15,60 @@ if(!function_exists('cadena_especial')){
 if(!function_exists('parset_resultado_panel')){
 
 	function parset_resultado_panel($datos, $mi_presupuesto, $tarjetas, $envio, $compras, $tarjeta){
+		$data = [];		
+		//Datos del cliente.
+		if($datos != null or count($datos)!=0){
+			$data['id']   			= $datos['id'];
+		    $data['apellido']   	= $datos['p_apellidos'];
+		    $data['nombre']     	= $datos['p_nombres'];	    
+		    $data['direccion']  	= $datos['p_direccion'];	    
+		    $data['postal']     	= $datos['p_cp'];	
+		    $data['localidad']  	= $datos['p_localidad'];	
+		    $data['telefono']  	 	= $datos['p_telefono'];	    
+		    $data['email']      	= $datos['p_email'];	
+		    $data['nacimiento'] 	= $datos['p_fecha_nacimiento'];	    
+		    $data['dni']        	= $datos['p_dni'];	
+		    $data['fijo']       	= $datos['p_telefono_fijo'];			    	
+		}				
 		
-		//Datos del cliente.					   
-		$data['id']   			= $datos['id'];
-	    $data['apellido']   	= $datos['p_apellidos'];
-	    $data['nombre']     	= $datos['p_nombres'];	    
-	    $data['direccion']  	= $datos['p_direccion'];	    
-	    $data['postal']     	= $datos['p_cp'];	
-	    $data['localidad']  	= $datos['p_localidad'];	
-	    $data['telefono']  	 	= $datos['p_telefono'];	    
-	    $data['email']      	= $datos['p_email'];	
-	    $data['nacimiento'] 	= $datos['p_fecha_nacimiento'];	    
-	    $data['dni']        	= $datos['p_dni'];	
-	    $data['fijo']       	= $datos['p_telefono_fijo'];	
-	    $data['id_presupuesto'] = $datos['p_id'];	
-		
-		//Datos de presupuestos.	    
-	    $data['id_web']     	= $mi_presupuesto['id_web'];
-	    $data['id_cliente'] 	= $mi_presupuesto['id_cliente'];	
-	    $data['anticipo']   	= $mi_presupuesto['anticipo'];
-	    $data['costo_envio']   	= $mi_presupuesto['costo_envio'];
-	    $data['vencimiento']   	= $mi_presupuesto['vencimiento'];
-	    $data['forma_pago']    	= $mi_presupuesto['forma_pago'];	
+		if($mi_presupuesto != null or count($mi_presupuesto)!=0){
+			//Datos de presupuestos.	    
+			$data['id_presupuesto'] = $mi_presupuesto['id'];
+		    $data['id_web']     	= $mi_presupuesto['id_web'];
+		    $data['id_cliente'] 	= $mi_presupuesto['id_cliente'];	
+		    $data['anticipo']   	= $mi_presupuesto['anticipo'];
+		    $data['costo_envio']   	= $mi_presupuesto['costo_envio'];
+		    $data['vencimiento']   	= $mi_presupuesto['vencimiento'];
+		    $data['forma_pago']    	= $mi_presupuesto['forma_pago'];
+		}
 
-	    //Tarjeta seleccionada
-		$data['mi_tarjeta']	    = $tarjeta;    
-		
-		//Datos de compras.
-	    $data['compras']    	= $compras;
-		
-		//Datos de envio.
-		$data['id_envio']   	= $envio['id'];
-	    $data['sucursal']   	= $envio['p_sucursal'];
-	    $data['localidad_envio']= $envio['p_localidad'];
-	    $data['envio']    		= $envio['p_denvio'];		
-		$data['calle']    		= $envio['p_calle'];
-		$data['puerta']    		= $envio['p_puerta'];
-		$data['piso']    		= $envio['p_piso'];
-		$data['depto']    		= $envio['p_depto'];
-		$data['cpostal']   		= $envio['p_cpostal'];
-		
-		//Datos de tarjeta.
-	    $data['tarjetas']      	= $tarjetas;
+			
+		if($tarjeta != null or count($tarjeta)!=0){
+		    //Tarjeta seleccionada
+			$data['mi_tarjeta']	    = $tarjeta;    
+		}
+		if($compras != null or count($compras)!=0){		
+			//Datos de compras.
+		    $data['compras']    	= $compras;
+		}
+
+	    if($envio != null or count($envio)!=0){
+			//Datos de envio.
+			$data['id_envio']   	= $envio['id'];
+		    $data['sucursal']   	= $envio['p_sucursal'];
+		    $data['localidad_envio']= $envio['p_localidad'];
+		    $data['envio']    		= $envio['p_denvio'];		
+			$data['calle']    		= $envio['p_calle'];
+			$data['puerta']    		= $envio['p_puerta'];
+			$data['piso']    		= $envio['p_piso'];
+			$data['depto']    		= $envio['p_depto'];
+			$data['cpostal']   		= $envio['p_cpostal'];
+		}
+
+		if($tarjetas != null or count($tarjetas)!=0){
+			//Datos de tarjeta.
+		    $data['tarjetas']      	= $tarjetas;
+		}
 		return $data;
 	}
 }

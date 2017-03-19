@@ -55,7 +55,7 @@
                     <!--Pestaña 2 ===========================================================================-->
                     <?php require('application/views/compra_new.php'); ?>
                     <!--Pestaña 3 ===========================================================================-->
-            				<?php require('application/views/pago_new.php'); ?>
+                    <?php require('application/views/pago_new.php'); ?>
                     <!--Pestaña 4 ===========================================================================-->
                     <?php require('application/views/envio_new.php'); ?>
                     <!--Fin pestaña==========================================================================-->

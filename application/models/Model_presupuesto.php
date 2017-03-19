@@ -192,7 +192,9 @@ Class Model_Presupuesto extends CI_Model {
 		                              
         );	
 
-        $this->db->insert('presupuestos_compra', $data); 
+		$query = $this->db->query('SELECT count(*) cant FROM presupuestos_compra WHERE codigo ="'.$a.'";');	
+	    $resultado = $query->row_array();
+	    if($resultado['cant'] == 0) $this->db->insert('presupuestos_compra', $data); 
 	}
 
 	function crear_nuevo_presupuesto(){
@@ -201,6 +203,45 @@ Class Model_Presupuesto extends CI_Model {
 		$this->db->insert('presupuestos', $data); 
 		$query = $this->db->query('SELECT id FROM presupuestos ORDER BY id DESC LIMIT 1;');	
 	    return (array)$query->row_array();
+	}
+
+	function crear_nuevo_usuario($a, $b, $c, $d, $e, $f, $g, $pre){
+		$data = array(
+           'p_nombres' => $a,
+           'p_apellidos' => $b,           
+           'p_direccion' => $c,	
+           'p_cp' => $d,		
+           'p_localidad' => $e,		   	              
+           'p_telefono' => $f,               		      		      		 
+		   'p_email' => $g,		                             
+		   'p_id' => $pre		                              
+        );
+		$query = $this->db->query('SELECT count(*) cant FROM presupuestos_cliente WHERE p_id = '.$pre.';');
+		$re = (array)$query->row_array();
+		$re = $re['cant'];
+
+		if($re == 0) $this->db->insert('presupuestos_cliente', $data);
+	}
+
+	function update_presupuesto($n_c, $n_w, $id){
+		$data = array(
+           'id_cliente' => $n_c,
+           'id_web' => $n_w		                                 
+        );			
+		
+		$this->db->where('id', $id);
+		$this->db->update('presupuestos', $data);
+	}
+
+	function update_presupuesto_2($ven,$cos,$ant,$presupuesto){
+		$data = array(
+           'anticipo' => $ant,
+           'vencimiento' => $ven,
+           'costo_envio' => $cos,		                                 
+        );			
+		
+		$this->db->where('id', $id);
+		$this->db->update('presupuestos', $data);
 	}
 }	
 

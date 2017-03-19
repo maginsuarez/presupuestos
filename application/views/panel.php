@@ -7,7 +7,7 @@
                 <div class="col-md-6">
                       <form class="form-inline">
                       <div class="form-group">
-                      <label for="numero" class="estilo_texto_panel center_menu">Nº <?php print $id; ?></label>
+                      <label for="numero" class="estilo_texto_panel center_menu">Nº <?php if(isset($id)) print $id; else echo ""; ?></label>
                       </div>
                       &nbsp; &nbsp;
                       <div class="form-group">

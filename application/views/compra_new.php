@@ -24,36 +24,38 @@
       </thead>
       <tbody class="estilo_texto_panel">
       <?php
-        for($i = 0; $i < count($compras); $i++){
-          $arreglo = (array)$compras[$i];
-          $a = $arreglo['id'];
-          $b = $arreglo['codigo'];
-          $c = $arreglo['descripcion'];
-          $d = $arreglo['cuotas'];
-          $e = $arreglo['precio'];
-          $f = $arreglo['dp'];
+        if(isset($compras)){
+          for($i = 0; $i < count($compras); $i++){
+            $arreglo = (array)$compras[$i];
+            $a = $arreglo['id'];
+            $b = $arreglo['codigo'];
+            $c = $arreglo['descripcion'];
+            $d = $arreglo['cuotas'];
+            $e = $arreglo['precio'];
+            $f = $arreglo['dp'];
 
-          echo "<input id='id_".$i."' value='".$a."' hidden/>";
-          echo "<input id='codigo_".$i."' value='".$b."' hidden/>";
-          echo "<input id='descripcion_".$i."' value='".$c."' hidden/>";
-          echo "<input id='cuotas_".$i."' value='".$d."' hidden/>";
-          echo "<input id='precio_".$i."' value='".$e."' hidden/>";
-          echo "<input id='dp_".$i."' value='".$f."' hidden/>";
+            echo "<input id='id_".$i."' value='".$a."' hidden/>";
+            echo "<input id='codigo_".$i."' value='".$b."' hidden/>";
+            echo "<input id='descripcion_".$i."' value='".$c."' hidden/>";
+            echo "<input id='cuotas_".$i."' value='".$d."' hidden/>";
+            echo "<input id='precio_".$i."' value='".$e."' hidden/>";
+            echo "<input id='dp_".$i."' value='".$f."' hidden/>";
 
-          echo "<tr id='tr_".$a."'>";
-          echo "<th scope='row'>".$a."</th>";
-          echo "<td>".$b."</td>";
-          echo "<td>".$c."</td>";
-          echo "<td>".$d."</td>";
-          echo "<td>".$e."</td>";
-          echo "<td>".$f."</td>";                                                           
-          echo "<td>";                                    
-          echo '<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editar" onclick="editar_elemento('.$i.', '.$a.');">
-          Editar</button> ';
-          echo '<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar" onclick="guardar_temporal('.$a.', '.$id_presupuesto.')">
-          Eliminar</button>';
-          echo "</td>";                                   
-          echo "</tr>";                                                                                        
+            echo "<tr id='tr_".$a."'>";
+            echo "<th scope='row'>".$a."</th>";
+            echo "<td>".$b."</td>";
+            echo "<td>".$c."</td>";
+            echo "<td>".$d."</td>";
+            echo "<td>".$e."</td>";
+            echo "<td>".$f."</td>";                                                           
+            echo "<td>";                                    
+            echo '<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editar" onclick="editar_elemento('.$i.', '.$a.');">
+            Editar</button> ';
+            echo '<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminar" onclick="guardar_temporal('.$a.', '.$id_presupuesto.')">
+            Eliminar</button>';
+            echo "</td>";                                   
+            echo "</tr>";                                                                                        
+          }
         }
       ?>
       </tbody>
@@ -169,7 +171,9 @@
         <span class="input-group-addon input_group_addon_selectivo estilo_texto_panel">Anticipo</span>
         <input id="msg" type="text" 
         style="text-align: center;"
-        class="form-control input-sm" name="anticipo" value="<?php echo $anticipo;?>">
+        class="form-control input-sm" name="anticipo" value="<?php
+                                                              if(isset($anticipo)) echo $anticipo;
+                                                              else echo "";?>">
         </div>
         <br>
         <div class="input-group">
@@ -177,14 +181,14 @@
           <input id="msg" type="text" 
           class="form-control input-sm"
           style="text-align: center;" 
-          name="costo" value="<?php echo $costo_envio;?>">
+          name="costo" value="<?php if(isset($costo_envio)) echo $costo_envio; else echo "";?>">
         </div>
         <br>
         <div class="input-group">
           <span class="input-group-addon input_group_addon_selectivo estilo_texto_panel">Vencimiento</span>
           <input id="msg" 
           style="text-align: center;" 
-          type="text" class="form-control input-sm" name="vencimiento" value="<?php echo $vencimiento;?>">
+          type="text" class="form-control input-sm" name="vencimiento" value="<?php if(isset($vencimiento)) echo $vencimiento; else echo "";?>">
         </div>
         <br>
         <div class="input-group">                  

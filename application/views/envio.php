@@ -1,5 +1,19 @@
 <div class="tab-pane" id="4a">
 <?php $long = 6; ?>
+
+<?php 
+    if(isset($id_presupuesto) == false)  $id_presupuesto = "";    
+    if(isset($sucursal) == false) $sucursal = "";     
+    if(isset($localidad_envio) == false) $localidad_envio = ""; 
+    if(isset($envio) == false) $envio = "";
+    if(isset($id_envio) == false) $id_envio = "";
+    if(isset($puerta) == false) $puerta = ""; 
+    if(isset($depto) == false) $depto = ""; 
+    if(isset($piso) == false) $piso = ""; 
+    if(isset($cpostal) == false) $cpostal = ""; 
+    if(isset($calle) == false) $calle = "";    
+  ?>
+
 </br>
   <div class="row">
   <div class="col-md-8">

@@ -63,7 +63,7 @@ if(!function_exists('parset_resultado_panel')){
 
 if(!function_exists('parset_resultado_panel_vacio')){
 
-	function parset_resultado_panel_vacio($tarjetas){			
+	function parset_resultado_panel_vacio($tarjetas, $presupuesto){			
 		$data['id']   			= "";
 	    $data['apellido']   	= "";
 	    $data['nombre']     	= "";	    
@@ -75,7 +75,7 @@ if(!function_exists('parset_resultado_panel_vacio')){
 	    $data['nacimiento'] 	= "";	    
 	    $data['dni']        	= "";	
 	    $data['fijo']       	= "";	
-	    $data['id_presupuesto'] = "";					  
+	    $data['id_presupuesto'] = $presupuesto;					  
 	    $data['id_web']     	= "";
 	    $data['id_cliente'] 	= "";	
 	    $data['anticipo']   	= "";

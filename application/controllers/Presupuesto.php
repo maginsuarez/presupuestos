@@ -75,6 +75,22 @@ class Presupuesto extends CI_Controller {
 		$this->index();
     }   
 	
+    public function nueva_compra($id){
+    	if($this->session->userdata('logueado')){
+    		if ($this->input->post()) {
+    			$a = $this->input->post('a');
+    			$b = $this->input->post('b');
+    			$c = $this->input->post('c');
+    			$d = $this->input->post('d');
+    			$e = $this->input->post('e');
+    			$this->model_presupuesto->new_compra($id, $a, $b, $c, $d, $e);
+    			$this->panel($id);
+    		}
+    		else $this->index();
+    	}
+		else $this->index(); 
+    }
+
 	public function guardar_cliente($id){
 		if($this->session->userdata('logueado')){
 			if ($this->input->post()) {			

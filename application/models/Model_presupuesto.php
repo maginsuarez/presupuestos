@@ -180,6 +180,20 @@ Class Model_Presupuesto extends CI_Model {
 		$this->db->where('id', $id_cliente);
 		$this->db->update('presupuestos_cliente', $data);
 	}
+
+	function new_compra($id, $a, $b, $c, $d, $e){
+		$data = array(
+           'codigo' => $a,
+           'descripcion' => $b,           
+           'cuotas' => $c,	
+           'precio' => $d,		
+           'dp' => $e,		   	              
+           'id_presupuesto' => $id
+		                              
+        );	
+
+        $this->db->insert('presupuestos_compra', $data); 
+	}
 }	
 
 ?>

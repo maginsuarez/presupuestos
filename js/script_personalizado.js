@@ -64,3 +64,5 @@ function guardar_compra(){
 	});		
 }
 
+
+

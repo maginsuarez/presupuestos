@@ -107,32 +107,34 @@
               <h4 class="modal-title">Agregar una compra</h4>
             </div>
             <div class="modal-body">
-              <form>
+              <?php echo form_open('/presupuesto/nueva_compra/'.$id_presupuesto) ;?>
               <div class="form-group">
                 <label class="control-label">Código</label>                                        
-                <input type="text" class="form-control"/>
+                <input type="text" name="a" class="form-control"/>
               </div>                                      
               <div class="form-group">
                 <label  class="control-label">Descripción</label>                                          
-                <input type="text" class="form-control"/>
+                <input type="text" name="b" class="form-control"/>
               </div>
               <div class="form-group">
                 <label  class="control-label">Cuotas</label>                                          
-                <input type="text" class="form-control"/>
+                <input type="text" name="c" class="form-control"/>
               </div>
               <div class="form-group">
                 <label  class="control-label">Precio</label>
-                <input type="text" class="form-control"/>                                          
+                <input type="text" name="d" class="form-control"/>                                          
               </div>
               <div class="form-group">
                 <label  class="control-label">Dp</label>                                          
-                <input type="text" class="form-control"/>
+                <input type="text" name="e" class="form-control"/>
               </div>
-              </form>
+              <div class="form-group">                
+                <button type="submit" class="btn btn-success">Guardar</button>  
+              </div>              
+              <?php echo form_close();?>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-success">Guardar</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>              
             </div>
           </div>
         </div>

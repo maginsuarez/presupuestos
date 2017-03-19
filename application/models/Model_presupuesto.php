@@ -34,7 +34,16 @@ Class Model_Presupuesto extends CI_Model {
 	function get_mi_envio($id){
 		$this -> db -> select('*');
 		$this -> db -> from('presupuestos_envio');	
-		$this -> db -> where('id', $id);
+		$this -> db -> where('id_presupuesto', $id);
+		$consulta = $this -> db -> get();
+		$resultado = $consulta -> row();
+		return $resultado;
+	}
+
+	function get_mi_envio_2($id){
+		$this -> db -> select('*');
+		$this -> db -> from('presupuestos_envio');	
+		$this -> db -> where('id_presupuesto', $id);
 		$consulta = $this -> db -> get();
 		$resultado = $consulta -> row();
 		return $resultado;
@@ -197,6 +206,24 @@ Class Model_Presupuesto extends CI_Model {
 	    if($resultado['cant'] == 0) $this->db->insert('presupuestos_compra', $data); 
 	}
 
+	function crear_nuevo_envio_model($id, $sucursal, $localidad, $envio, $calle, $puerta, $piso, $depto, $cod_postal){
+		$data = array(
+           'p_sucursal' => $sucursal,
+           'p_localidad' => $localidad,           
+           'p_denvio' => $envio,	
+           'p_calle' => $calle,		
+           'p_puerta' => $puerta,		   	              
+           'p_piso' => $piso,
+           'p_depto' => $depto,
+           'p_cpostal' => $cod_postal,
+		   'id_presupuesto' => $id,		                              
+        );
+
+        $query = $this->db->query('SELECT count(*) cant FROM presupuestos_envio WHERE id_presupuesto ="'.$id.'";');	
+	    $resultado = $query->row_array();
+	    if($resultado['cant'] == 0) $this->db->insert('presupuestos_envio', $data);
+	}
+
 	function crear_nuevo_presupuesto(){
 		$fecha = date("Y/m/d");
 		$data = array('creacion' => $fecha);
@@ -240,7 +267,7 @@ Class Model_Presupuesto extends CI_Model {
            'costo_envio' => $cos,		                                 
         );			
 		
-		$this->db->where('id', $id);
+		$this->db->where('id', $presupuesto);
 		$this->db->update('presupuestos', $data);
 	}
 }	

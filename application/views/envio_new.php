@@ -18,7 +18,7 @@
   <div class="row">
   <div class="col-md-8">
     
-    <?php echo form_open('/presupuesto/guardar_envio/'.$id_presupuesto, array('class' => "form-horizontal")) ;?>
+    <?php echo form_open('/presupuesto/crear_nuevo_envio/'.$id_presupuesto, array('class' => "form-horizontal")) ;?>
     
     <input name="id_envio" value="<?php print $id_envio; ?>" hidden>
     

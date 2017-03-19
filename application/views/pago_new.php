@@ -23,7 +23,7 @@
   <?php $long = "col-sm-6";?>
   
   <div class="col-md-8">    
-    <?php echo form_open('/presupuesto/guardar_pago/'.$id_presupuesto, array('class' => "form-horizontal")) ;?>
+    <?php echo form_open('/presupuesto/guardar_pago_new/'.$id_presupuesto, array('class' => "form-horizontal")) ;?>
     <div>
             <input name="id_presupuesto" value="<?php print $id_presupuesto; ?>" hidden>
             <input name="id_cliente" value="<?php print $id; ?>" hidden>

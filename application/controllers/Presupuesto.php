@@ -140,7 +140,7 @@ class Presupuesto extends CI_Controller {
 
    				$tarjeta = (array) $this->model_presupuesto->get_tarjeta($tipo_tarjeta);
 
-   				$datos_envio = (array) $this->model_presupuesto->get_mi_envio($nro_envio);   	   				
+   				$datos_envio = (array) $this->model_presupuesto->get_mi_envio_2($id);    	   				
 
    				//Busco los datos del cliente
 		        $datos = $this->model_presupuesto->get_cliente($p_id);
@@ -211,6 +211,66 @@ class Presupuesto extends CI_Controller {
 		else $this->index();      	
 	}
 	
+	public function guardar_pago_new($id){
+		if($this->session->userdata('logueado')){
+			if ($this->input->post()) {			
+				$id_presupuesto = $this->input->post('id_presupuesto');
+				$id_cliente = $this->input->post('id_cliente');	
+				$nombre 	= $this->input->post('pago_nombre');
+				$apellido 	= $this->input->post('pago_apellido');				
+				$nacimiento	= $this->input->post('pago_nacimiento');			
+				$dni 		= $this->input->post('pago_dni');			
+				$email 		= $this->input->post('pago_email');
+				$fijo    	= $this->input->post('pago_tel_fijo');			
+				$direccion	= $this->input->post('pago_direccion');
+				$postal		= $this->input->post('pago_postal');						
+				$localidad  = $this->input->post('pago_localidad');
+
+				$pago 		= $this->input->post('pago');
+				$tarjeta	= $this->input->post('tarjeta');				
+
+				$usuario    = $this->model_presupuesto->save_pago($id_cliente, 
+																  $nombre, 
+																  $apellido, 
+																  $nacimiento, 
+																  $dni, 
+																  $email, 
+																  $fijo, 
+																  $direccion, 
+																  $postal, 
+																  $localidad,
+																  $pago,
+																  $tarjeta,
+																  $id_presupuesto);
+
+				$mi_presupuesto = (array)$this->model_presupuesto->get_mi_presupuesto($id);
+
+				//Obtener mi datos de envio   				   				
+   				$p_id = $mi_presupuesto['id'];
+   				$nro_envio = $mi_presupuesto['nro_envio'];
+   				$tipo_tarjeta = $mi_presupuesto['id_pago'];
+
+   				$tarjeta = (array) $this->model_presupuesto->get_tarjeta($tipo_tarjeta);
+
+   				$datos_envio = (array) $this->model_presupuesto->get_mi_envio_2($id);   	   				
+
+   				//Busco los datos del cliente
+		        $datos = $this->model_presupuesto->get_cliente($p_id);
+		        $compras = $this->model_presupuesto->get_compras($p_id);		        
+				$tarjetas = $this->model_presupuesto->get_tarjetas();		        
+
+			    $datos = parset_resultado_panel($datos,$mi_presupuesto,$tarjetas,$datos_envio,$compras, $tarjeta);
+
+    	    	$this->load->view('header');							
+			    $this->load->view('panel_nuevo', $datos);
+			    $this->load->view('footer');																  											   						 
+			}
+			else $this->index();
+		}
+		else $this->index();      	
+	}
+
+
 	public function guardar_envio($id){
 		if($this->session->userdata('logueado')){
 			if ($this->input->post()) {				
@@ -244,7 +304,7 @@ class Presupuesto extends CI_Controller {
 
    				$tarjeta = (array) $this->model_presupuesto->get_tarjeta($tipo_tarjeta);
 
-   				$datos_envio = (array) $this->model_presupuesto->get_mi_envio($nro_envio);   	   				
+   				$datos_envio = (array) $this->model_presupuesto->get_mi_envio($id);   	   				
 
    				//Busco los datos del cliente
 		        $datos = $this->model_presupuesto->get_cliente($p_id);
@@ -371,14 +431,20 @@ class Presupuesto extends CI_Controller {
 		$this->load->view('footer');
     }  
 
-    public function update_presupuesto($id){
+    public function crear_nuevo_envio($id){
     	if($this->session->userdata('logueado')){
     		if ($this->input->post()) {
-    			$a = $this->input->post('vencimiento');
-    			$b = $this->input->post('costo');
-    			$c = $this->input->post('anticipo');
 
-    			$this->model_presupuesto->update_presupuesto_2($ven,$cos,$ant,$presupuesto);
+    			$sucursal 	= $this->input->post('sucursal');				
+				$localidad 	= $this->input->post('localidad');			
+				$envio 		= $this->input->post('envio');			
+				$calle 		= $this->input->post('calle');
+				$puerta 	= $this->input->post('puerta');			
+				$piso 		= $this->input->post('piso');
+				$depto 		= $this->input->post('depto');						
+				$cod_postal	= $this->input->post('cod_postal');
+				
+    			$this->model_presupuesto->crear_nuevo_envio_model($id, $sucursal, $localidad, $envio, $calle, $puerta, $piso, $depto, $cod_postal);
 
     			//Obtengo el presupuesto
    				$mi_presupuesto = (array)$this->model_presupuesto->get_mi_presupuesto($id);
@@ -390,7 +456,44 @@ class Presupuesto extends CI_Controller {
 
    				$tarjeta = (array) $this->model_presupuesto->get_tarjeta($tipo_tarjeta);
 
-   				$datos_envio = (array) $this->model_presupuesto->get_mi_envio($nro_envio);   	   				
+   				$datos_envio = (array) $this->model_presupuesto->get_mi_envio_2($id);   	   				
+
+   				//Busco los datos del cliente
+		        $datos = $this->model_presupuesto->get_cliente($p_id);
+		        $compras = $this->model_presupuesto->get_compras($p_id);		        
+				$tarjetas = $this->model_presupuesto->get_tarjetas();		        
+
+			    $datos = parset_resultado_panel($datos,$mi_presupuesto,$tarjetas,$datos_envio,$compras, $tarjeta);
+
+    	    	$this->load->view('header');							
+			    $this->load->view('panel_nuevo', $datos);
+			    $this->load->view('footer');
+    		}
+    		else $this->index();
+    	}
+		else $this->index();
+    }
+
+    public function update_presupuesto($id){
+    	if($this->session->userdata('logueado')){
+    		if ($this->input->post()) {
+    			$a = $this->input->post('vencimiento');
+    			$b = $this->input->post('costo');
+    			$c = $this->input->post('anticipo');
+
+    			$this->model_presupuesto->update_presupuesto_2($a,$b,$c,$id);
+
+    			//Obtengo el presupuesto
+   				$mi_presupuesto = (array)$this->model_presupuesto->get_mi_presupuesto($id);
+
+				//Obtener mi datos de envio   				   				
+   				$p_id = $mi_presupuesto['id'];
+   				$nro_envio = $mi_presupuesto['nro_envio'];
+   				$tipo_tarjeta = $mi_presupuesto['id_pago'];
+
+   				$tarjeta = (array) $this->model_presupuesto->get_tarjeta($tipo_tarjeta);
+
+   				$datos_envio = (array) $this->model_presupuesto->get_mi_envio_2($id);   	   				
 
    				//Busco los datos del cliente
 		        $datos = $this->model_presupuesto->get_cliente($p_id);

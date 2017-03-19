@@ -5,21 +5,28 @@
 
       <form class="form-inline">
       <div class="form-group">
+      <label>Nº Presupuesto:</label>
+      &nbsp;
+      <input type="text" style="text-align: center;" class="form-control" value="<?php print $id_presupuesto;?>" disabled>    
+      </div>
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <div class="form-group">
       <label>Nº Cliente:</label>  
-		  &nbsp;    
-      <input type="text" style="text-align: center;" class="form-control" value="<?php print $id_cliente;?>">           
+      &nbsp;    
+      <input type="text" style="text-align: center;" class="form-control" value="<?php print $id_cliente;?>">        
       </div>      
-	      &nbsp;
-	      &nbsp;
-	      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
       <div class="form-group">
       <label>Nº Web:</label>     
-          &nbsp; 
+      &nbsp; 
       <input type="text" style="text-align: center;" class="form-control" value="<?php print $id_web;?>">      
       </div>
       </form>	  	 
-	  
-	  </br>
+	</br>
       <label class="mr-sm-2 estilo_texto_panel_titulo" for="inlineFormCustomSelect"> Datos de cliente y Comentarios adicionales: </label>
       </br>
       

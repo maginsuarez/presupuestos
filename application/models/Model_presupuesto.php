@@ -194,6 +194,14 @@ Class Model_Presupuesto extends CI_Model {
 
         $this->db->insert('presupuestos_compra', $data); 
 	}
+
+	function crear_nuevo_presupuesto(){
+		$fecha = date("Y/m/d");
+		$data = array('creacion' => $fecha);
+		$this->db->insert('presupuestos', $data); 
+		$query = $this->db->query('SELECT id FROM presupuestos ORDER BY id DESC LIMIT 1;');	
+	    return (array)$query->row_array();
+	}
 }	
 
 ?>

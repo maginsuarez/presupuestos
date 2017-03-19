@@ -58,12 +58,37 @@
 		          <div class="col-sm-6">
 		            <input class="btn btn-success" role="button" type="submit" value="Buscar" 
 		            style="width:40%;">
-		          </div>
+		          </div>		          
 		        </div>
 		        <div class="form-group">
 				<div class="col-sm-6">
-				<a class="btn btn-primary" href="<?php echo base_url(); ?>index.php/presupuesto/panel_nuevo" role="button" 
-				style="width:40%;">Nuevo </a>
+
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:40%;">
+				  Nuevo
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Nuevo Presupuesto</h4>
+				      </div>
+				      <div class="modal-body">
+				        ¿Desea crear un nuevo presupuesto?
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				        <a  class="btn btn-primary" 
+				        	href="<?php echo base_url(); ?>index.php/presupuesto/panel_nuevo" 
+				        	role="button">Ok</a>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+						
 				</div>      
 		        </div>      
 		      </form>		      

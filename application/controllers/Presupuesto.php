@@ -214,8 +214,9 @@ class Presupuesto extends CI_Controller {
     public function panel_nuevo(){
     	if($this->session->userdata('logueado')){	
     		$this->load->view('header');
-    		$datos = parset_resultado_panel_vacio();
-		    $this->load->view('panel',$datos);
+    		$tarjetas = $this->model_presupuesto->get_tarjetas();
+    		$datos = parset_resultado_panel_vacio($tarjetas);
+		    $this->load->view('panel_nuevo',$datos);
 		    $this->load->view('footer');
     	}
 		else $this->index();

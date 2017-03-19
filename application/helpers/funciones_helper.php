@@ -63,24 +63,37 @@ if(!function_exists('parset_resultado_panel')){
 
 if(!function_exists('parset_resultado_panel_vacio')){
 
-	function parset_resultado_panel_vacio(){			
-		$data['apellido']   = "";
-	    $data['nombre']     = "";	    
-	    $data['direccion']  = "";	    
-	    $data['postal']     = "";	
-	    $data['localidad']  = "";	
-	    $data['telefono']   = "";	    
-	    $data['email']      = "";	
-	    $data['nacimiento'] = "";	    
-	    $data['dni']        = "";	
-	    $data['fijo']       = "";	
-	    $data['id_presupuesto'] = "";		    
-	    $data['id_web']     = "";
-	    $data['id_cliente'] = "";   
-	    $data['anticipo']   = "";
-	    $data['costo_envio']   = "";
-	    $data['vencimiento']   = "";
-	    $data['forma_pago']   = "";
+	function parset_resultado_panel_vacio($tarjetas){			
+		$data['id']   			= "";
+	    $data['apellido']   	= "";
+	    $data['nombre']     	= "";	    
+	    $data['direccion']  	= "";	    
+	    $data['postal']     	= "";	
+	    $data['localidad']  	= "";	
+	    $data['telefono']  	 	= "";	    
+	    $data['email']      	= "";	
+	    $data['nacimiento'] 	= "";	    
+	    $data['dni']        	= "";	
+	    $data['fijo']       	= "";	
+	    $data['id_presupuesto'] = "";					  
+	    $data['id_web']     	= "";
+	    $data['id_cliente'] 	= "";	
+	    $data['anticipo']   	= "";
+	    $data['costo_envio']   	= "";
+	    $data['vencimiento']   	= "";
+	    $data['forma_pago']    	= "";		   
+		$data['mi_tarjeta']	    = [];    		
+	    $data['compras']    	= [];			
+		$data['id_envio']   	= "";
+	    $data['sucursal']   	= "";
+	    $data['localidad_envio']= "";
+	    $data['envio']    		= "";		
+		$data['calle']    		= "";
+		$data['puerta']    		= "";
+		$data['piso']    		= "";
+		$data['depto']    		= "";
+		$data['cpostal']   		= "";			
+	    $data['tarjetas']      	= $tarjetas;
 		return $data;
 	}
 }

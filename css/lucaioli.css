@@ -10,8 +10,8 @@
 
 #content{
 	max-width: 1000px;
-  margin: 3px auto;
-  min-height: 80px;
+  /**margin: 3px auto;
+  min-height: 80px;*/
   padding: 10px;
   float: left;
 }
@@ -137,4 +137,10 @@
 	font-family: 'Open Sans', sans-serif !important;
 	font-size: 13px;
 	font-weight: bold !important;
+}
+.cerrar_sesion_3{  
+  color: #FFFFFF !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 13px;
+  font-weight: bold !important;
 }

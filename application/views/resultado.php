@@ -14,7 +14,7 @@ if($cant != 0) $keys = array_keys($arreglo);
 
 <div>
       <h3>Presupuesto:</h3>
-      <div class="table-responsive" style="height: 400px !important; ">          
+      <div class="table-responsive" style="height: 300px !important; ">          
       <table class="table table-striped">
         <thead>
           <tr>

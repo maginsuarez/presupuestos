@@ -43,7 +43,12 @@ function guardar_compra(){
 	var cuo = document.getElementById("cuo").value;
 	var pre = document.getElementById("pre").value;
 	var dp = document.getElementById("dp").value;
-	var parametros={"id" : localStorage.getItem("compra_temporal_id"),"cod": cod, "des": des, "cuo": cuo, "pre": pre, "dp": dp};
+	var parametros={"id" : localStorage.getItem("compra_temporal_id"),
+					"cod": cod, 
+					"des": des, 
+					"cuo": cuo, 
+					"pre": pre, 
+					 "dp": dp};
 
 	$.ajax({
 	  data: parametros,
@@ -53,6 +58,7 @@ function guardar_compra(){
 	  success: function (data) {
 	  	console.log(data);	  	
 		$('#editar').modal('toggle');
+		location.reload();
 		localStorage.setItem("compra_temporal_id", ""); 
 	  }
 	});		

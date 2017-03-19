@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect("localhost","root","","presupuestos");
+$con = mysqli_connect("localhost","root","root","presupuestos");
 
 $cod  = $_POST['cod'];
 $des  = $_POST['des'];
